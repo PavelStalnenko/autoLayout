@@ -9,61 +9,46 @@
 import UIKit
 
 class ProfileHeaderView: UIView {
-    var imageAvatar:UIImageView{
-        let image:UIImage = UIImage(named: "avatar")!
-        let imageView = UIImageView(image: image)
-        imageView.frame = CGRect(x: 16, y: 100, width: 150, height: 150)
-        imageView.layer.cornerRadius = imageView.bounds.height/2
-        imageView.clipsToBounds = true
-        imageView.layer.borderWidth = 3
-        imageView.layer.borderColor = UIColor.white.cgColor
-        
-        return imageView
+    @IBOutlet weak var imageAvatarView: UIImageView!{
+        didSet{
+            imageAvatarView.layer.cornerRadius = imageAvatarView.bounds.height/2
+            imageAvatarView.clipsToBounds = true
+            imageAvatarView.layer.borderWidth = 3
+            imageAvatarView.layer.borderColor = UIColor.white.cgColor
+        }
     }
-    var name:UILabel{
-        let name = UILabel(frame: CGRect(x: 190, y: 100, width: 150, height: 100))
-        name.font = UIFont.systemFont(ofSize: 18, weight: .bold)
-        name.text = "Pavel Stalnenko"
-        name.textColor = .black
-        return name
+    @IBOutlet weak var fullNameLabel: UILabel! {
+        didSet{
+            fullNameLabel.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+            fullNameLabel.text = "Pavel Stalnenko"
+            fullNameLabel.textColor = .black
+        }
     }
-    
-    var status:UILabel {
-        let status = UILabel(frame: CGRect(x: 190, y: 150, width: 150, height: 100))
-        status.text = "Waiting for something"
-        status.font = UIFont.systemFont(ofSize: 14, weight: .regular)
-        status.textColor = .gray
-        return status
+    @IBOutlet weak var statusLabel: UILabel! {
+        didSet{
+            statusLabel.text = "Waiting for something"
+            statusLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+            statusLabel.textColor = .gray
+        }
     }
-    
-    var button:UIButton{
-        let button = UIButton(frame: CGRect(x: 16, y: 280, width:344, height: 50))
-        button.setTitle("Show status", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = .blue
-        button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
-        button.layer.cornerRadius = 14
-        button.layer.shadowOffset.width = 4
-        button.layer.shadowOffset.height = 4
-        button.layer.shadowRadius = 4
-        button.layer.shadowColor = UIColor.black.cgColor
-        button.layer.shadowOpacity = 0.7
-        return button
+    @IBOutlet weak var statusTextField: UITextField! {
+        didSet{
+            statusTextField.font = UIFont.systemFont(ofSize: 15, weight: .regular)
+            statusTextField.textColor = .black
+            statusTextField.layer.backgroundColor = UIColor.white.cgColor
+            statusTextField.layer.cornerRadius = 12
+            statusTextField.layer.borderWidth = 1
+            statusTextField.layer.borderColor = UIColor.black.cgColor
+        }
     }
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        addSubview(imageAvatar)
-        addSubview(name)
-        addSubview(status)
-        addSubview(button)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    
-    @objc func buttonPressed(){
-        print(status.text!)
+    @IBOutlet weak var setStatusButton: UIButton! {
+        didSet {
+            setStatusButton.layer.cornerRadius = 14
+            setStatusButton.layer.shadowOffset.width = 4
+            setStatusButton.layer.shadowOffset.height = 4
+            setStatusButton.layer.shadowRadius = 4
+            setStatusButton.layer.shadowColor = UIColor.black.cgColor
+            setStatusButton.layer.shadowOpacity = 0.7
+        }
     }
 }
