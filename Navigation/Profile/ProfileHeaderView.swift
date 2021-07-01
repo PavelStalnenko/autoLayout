@@ -17,13 +17,15 @@ class ProfileHeaderView: UIView {
             imageAvatarView.layer.borderColor = UIColor.white.cgColor
         }
     }
+    
     @IBOutlet weak var fullNameLabel: UILabel! {
-        didSet{
-            fullNameLabel.font = UIFont.systemFont(ofSize: 18, weight: .bold)
-            fullNameLabel.text = "Pavel Stalnenko"
-            fullNameLabel.textColor = .black
-        }
+                didSet{
+                    fullNameLabel.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+                    fullNameLabel.text = "Pavel Stalnenko"
+                    fullNameLabel.textColor = .black
+                }
     }
+
     @IBOutlet weak var statusLabel: UILabel! {
         didSet{
             statusLabel.text = "Waiting for something"
